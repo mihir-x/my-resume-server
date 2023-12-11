@@ -11,7 +11,9 @@ const mailgun = new Mailgun(formData);
 const mg = mailgun.client({ username: 'api', key: process.env.MAIL_GUN_API_KEY || 'key-yourkeyhere' });
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin:['http://localhost:5173']
+}))
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.5hh1tg8.mongodb.net/?retryWrites=true&w=majority`;
